@@ -30,6 +30,24 @@ def hello_world():
             <input type="number" id="num2" name="num2" required>
             <button type="submit">Sumar</button>
         </form>
+
+        <form action="/resta" method="get">
+            <h1>Coloca números para hacer la resta:</h1>
+            <label for="num1">Número 1:</label>
+            <input type="number" id="num1" name="num1" required>
+            <label for="num2">Número 2:</label>
+            <input type="number" id="num2" name="num2" required>
+            <button type="submit">Restar</button>
+        </form>
+
+        <form action="/multi" method="get">
+            <h1>Coloca números para hacer la multiplicación:</h1>
+            <label for="num1">Número 1:</label>
+            <input type="number" id="num1" name="num1" required>
+            <label for="num2">Número 2:</label>
+            <input type="number" id="num2" name="num2" required>
+            <button type="submit">Multiplicar</button>
+        </form>
     </body>
     </html>
     """
@@ -46,6 +64,16 @@ def suma():
     num1 = int(request.args.get("num1", 0))  # Si no hay valores, usa 0 por defecto
     num2 = int(request.args.get("num2", 0))
     return f"<h1 style = ' text-align: center;'>La suma de {num1} con {num2} es {num1 + num2}</h1>"
+@app.route("/resta")
+def resta():
+    num1 = int(request.args.get("num1", 0))  # Si no hay valores, usa 0 por defecto
+    num2 = int(request.args.get("num2", 0))
+    return f"<h1 style = ' text-align: center;'>La resta de {num1} con {num2} es {num1 - num2}</h1>"
+@app.route("/multi")
+def multi():
+    num1 = int(request.args.get("num1", 0))  # Si no hay valores, usa 0 por defecto
+    num2 = int(request.args.get("num2", 0))
+    return f"<h1 style = ' text-align: center;'>La multiplicación de {num1} con {num2} es {num1 * num2}</h1>"
 @app.route("/datos")
 def datos():
     lista_datos = [
